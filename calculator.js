@@ -13,12 +13,12 @@ Hint: We need:
 
 let total = 0;
 let strbuffer = "";
-let operator = "";
+let operator;
 
 /*  FUNC DESCRIPTION: Operator calculations. Create the in +, x, -, and ÷ operator calculations. The plus operator is done for you!
     Uncomment and fill in the blank spaces. */
 function calculations() {
-    const intBuffer = parseInt(); // Hint: Use parseInt to convert string to integer
+    const intBuffer = parseInt(strbuffer); // Hint: Use parseInt to convert string to integer
     if (operator === "+") {
         total += intBuffer;
     }
@@ -67,7 +67,6 @@ function makesSymbol(symbol) {
         strbuffer = total; //check
         total = 0;
         operator = null;
-        return;
     }
     else { //make functionality if symbol is an operator
         const intBuffer = parseInt(strbuffer);
@@ -87,6 +86,7 @@ function setListeners() {
     //Hint: We want to select all buttons from html and make it so that something happens when you click on the buttons! querySelectorAll might be helpful
     let buttons = document.querySelectorAll(".buttons");
     for (item of buttons) {
+        console.log(item);
         item.addEventListener("click", function (event) {
             buttonClicked(event.target.innerText);
         })
@@ -96,7 +96,7 @@ function setListeners() {
 }
 
 //Make sure to call setListeners!!!
-setListeners()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+setListeners()
 
 /*  FUNC DESCRIPTION: Now we will write the function that takes care of when a button is clicked. */
 function buttonClicked(valueClicked) {
@@ -107,6 +107,6 @@ function buttonClicked(valueClicked) {
         //Hint: call a function we just created!
         makesNumber(valueClicked);
     }
-    document.querySelectorAll(".result-screen").innerText = strbuffer;
+    document.querySelector(".result-screen").innerText = strbuffer;
     // Hint: we need to change what number appears on the screen! to change html, one listener you could use is querySelector
 }
